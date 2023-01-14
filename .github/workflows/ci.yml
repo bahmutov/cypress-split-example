@@ -1,6 +1,7 @@
 name: ci
 on: push
 jobs:
+  # example running all tests on a single machine
   test:
     runs-on: ubuntu-20.04
     steps:
@@ -9,61 +10,36 @@ jobs:
 
       - name: Run Cypress tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
 
-  # there was a breaking change under the hood in Cypress v11.1.0
-  # so make sure this plugin still works for older versions
-  test-cypress-v11-0:
+  # example splitting all tests across GitHub machines
+  prepare:
     runs-on: ubuntu-20.04
+    # explicitly set the output of this job
+    # so that other jobs can use it
+    outputs:
+      matrix: ${{ steps.prepare.outputs.matrix }}
+    steps:
+      # generate the list using a bash script
+      - name: Create matrix ⊹
+        id: prepare
+        # for reusable workflow, must use the full action reference
+        uses: bahmutov/gh-build-matrix@main
+        with:
+          n: 3 # number of containers to output
+
+      - name: Print result 🖨
+        run: echo '${{ steps.prepare.outputs.matrix }}'
+
+  test-split:
+    needs: prepare
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Run Cypress tests 🧪
-        # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
-        with:
-          build: npm install -D cypress@11.0.1
-
-  test-cypress-v9:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
-
-      - name: Install top dependencies 📦
-        # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-
-      - name: Run Cypress v9 tests 🧪
-        uses: cypress-io/github-action@v4
-        with:
-          working-directory: cypress-v9
-
-      - uses: actions/upload-artifact@v2
-        name: Store any v9 screenshots 🖼
-        if: failure()
-        with:
-          name: cypress-screenshots-v9
-          path: cypress-v9/cypress/screenshots
-
-  release:
-    needs: [test, test-cypress-v9, test-cypress-v11-0]
-    runs-on: ubuntu-20.04
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
-
-      - name: Install only the semantic release 📦
-        run: npm install semantic-release
-
-      - name: Semantic Release 🚀
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          branch: main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Print GitHub variables 🖨
+        run: npx @bahmutov/print-env GITHUB
