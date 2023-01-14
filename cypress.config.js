@@ -1,4 +1,4 @@
-const { findCypressSpecs } = require('find-cypress-specs')
+const { getSpecs } = require('find-cypress-specs')
 const { defineConfig } = require('cypress')
 
 function getChunk(values, totalChunks, chunkIndex) {
@@ -20,6 +20,8 @@ function getChunk(values, totalChunks, chunkIndex) {
   return chunk
 }
 
+const label = 'cypress-split:'
+
 module.exports = defineConfig({
   e2e: {
     // baseUrl, etc
@@ -30,14 +32,15 @@ module.exports = defineConfig({
         console.log(config.specs)
       }
       if (process.env.SPLIT && process.env.SPLIT_INDEX) {
-        const specs = findCypressSpecs(config)
-        console.log('all specs %d', specs.length)
-        console.log(specs)
+        const specs = getSpecs(config)
+        console.log('%s there are %d found specs', label, specs.length)
+        // console.log(specs)
         const splitN = Number(process.env.SPLIT)
         const splitIndex = Number(process.env.SPLIT_INDEX)
-        console.log('split %d of %d', splitIndex, splitN)
+        console.log('%s split %d of %d', label, splitIndex, splitN)
         const splitSpecs = getChunk(specs, splitN, splitIndex)
-        config.specs = splitSpecs
+        console.log(splitSpecs)
+        config.specPattern = splitSpecs
         return config
       }
     },
