@@ -21,6 +21,7 @@
   "homepage": "https://github.com/bahmutov/cypress-split-example#readme",
   "devDependencies": {
     "cypress": "^12.3.0",
+    "find-cypress-specs": "^1.24.0",
     "prettier": "^2.8.3"
   }
 }
