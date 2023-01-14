@@ -43,3 +43,6 @@ jobs:
 
       - name: Print GitHub variables 🖨
         run: npx @bahmutov/print-env GITHUB
+
+      - name: Print GitHub strategy context 🖨
+        run: echo '${{ toJSON(strategy) }}'
