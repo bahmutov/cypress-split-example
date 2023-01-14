@@ -1,0 +1,26 @@
+{
+  "name": "cypress-split-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "badges": "npx -p dependency-version-badge update-badge cypress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/cypress-split-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bahmutov/cypress-split-example/issues"
+  },
+  "homepage": "https://github.com/bahmutov/cypress-split-example#readme",
+  "devDependencies": {
+    "cypress": "^12.3.0",
+    "prettier": "^2.8.3"
+  }
+}
