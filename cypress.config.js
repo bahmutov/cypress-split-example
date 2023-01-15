@@ -1,6 +1,7 @@
 const { getSpecs } = require('find-cypress-specs')
 const { defineConfig } = require('cypress')
 const ghCore = require('@actions/core')
+const cTable = require('console.table')
 
 function getChunk(values, totalChunks, chunkIndex) {
   // split all items into N chunks and take just a single chunk
@@ -65,13 +66,15 @@ module.exports = defineConfig({
         const splitIndex = Number(SPLIT_INDEX)
         console.log('%s split %d of %d', label, splitIndex, splitN)
         const splitSpecs = getChunk(specs, splitN, splitIndex)
-        console.log(splitSpecs)
+
+        const specRows = splitSpecs.map((specName, k) => {
+          return [String(k + 1), specName]
+        })
+        cTable(['k', 'spec'], specRows)
 
         if (process.env.GITHUB_ACTIONS) {
           // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
-          const specRows = splitSpecs.map((specName, k) => {
-            return [String(k + 1), specName]
-          })
+
           ghCore.summary
             .addHeading(
               `${label}: split ${splitIndex + 1} of ${splitN} (${
