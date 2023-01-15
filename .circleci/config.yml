@@ -18,3 +18,5 @@ workflows:
           # https://circleci.com/docs/variables/#built-in-environment-variables
           build: npx @bahmutov/print-env CIRCLE
           command: npx cypress run --env split=true
+          # no further jobs, thus no need to save the files
+          no-workspace: true
