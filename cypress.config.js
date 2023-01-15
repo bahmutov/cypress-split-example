@@ -22,6 +22,8 @@ function getChunk(values, totalChunks, chunkIndex) {
 
 const label = 'cypress-split:'
 
+const isDefined = (x) => typeof x !== 'undefined'
+
 module.exports = defineConfig({
   e2e: {
     // baseUrl, etc
@@ -31,7 +33,13 @@ module.exports = defineConfig({
       if (config.specs) {
         console.log(config.specs)
       }
-      if (process.env.SPLIT && process.env.SPLIT_INDEX) {
+
+      // the user can specify the split flag / numbers
+      // using either OS process environment variables
+      // or Cypress env variables
+      const SPLIT = process.env.SPLIT || config.env.split
+      const SPLIT_INDEX = process.env.SPLIT_INDEX || config.env.splitIndex
+      if (isDefined(SPLIT) && isDefined(SPLIT_INDEX)) {
         const specs = getSpecs(config)
         console.log('%s there are %d found specs', label, specs.length)
         // console.log(specs)
