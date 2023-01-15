@@ -42,7 +42,7 @@ module.exports = defineConfig({
       if (SPLIT === 'true' || SPLIT === true) {
         // the user wants us to determine the machine index
         // and the total number of machines, which is possible for some CI systems
-        if (process.env.CIRCLE) {
+        if (process.env.CIRCLECI) {
           SPLIT = process.env.CIRCLE_NODE_TOTAL
           SPLIT_INDEX = process.env.CIRCLE_NODE_INDEX
           console.log(
