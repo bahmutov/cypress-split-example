@@ -41,6 +41,8 @@ module.exports = defineConfig({
         const splitSpecs = getChunk(specs, splitN, splitIndex)
         console.log(splitSpecs)
         config.specPattern = splitSpecs
+        // TODO: if this is the first machine, it can output
+        // the split chunks to the job summary
         return config
       }
     },
