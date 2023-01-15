@@ -1,5 +1,6 @@
 const { getSpecs } = require('find-cypress-specs')
 const { defineConfig } = require('cypress')
+const ghCore = require('@actions/core')
 
 function getChunk(values, totalChunks, chunkIndex) {
   // split all items into N chunks and take just a single chunk
@@ -64,6 +65,21 @@ module.exports = defineConfig({
         console.log('%s split %d of %d', label, splitIndex, splitN)
         const splitSpecs = getChunk(specs, splitN, splitIndex)
         console.log(splitSpecs)
+
+        if (process.env.GITHUB_ACTIONS) {
+          const specRows = splitSpecs.map((specName, k) => {
+            return [k + 1, specName]
+          })
+          ghCore.summary
+            .addHeading(
+              `${label}: split ${splitIndex + 1} of ${split} (${
+                splitSpecs.length
+              } specs)`,
+            )
+            .addTable(specRows)
+            .write()
+        }
+
         config.specPattern = splitSpecs
         // TODO: if this is the first machine, it can output
         // the split chunks to the job summary
