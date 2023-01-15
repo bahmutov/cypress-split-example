@@ -68,8 +68,9 @@ module.exports = defineConfig({
         console.log(splitSpecs)
 
         if (process.env.GITHUB_ACTIONS) {
+          // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
           const specRows = splitSpecs.map((specName, k) => {
-            return [k + 1, specName]
+            return [String(k + 1), specName]
           })
           ghCore.summary
             .addHeading(
@@ -77,7 +78,14 @@ module.exports = defineConfig({
                 splitSpecs.length
               } specs)`,
             )
-            .addTable(specRows)
+            .addTable([
+              [
+                { data: 'k', header: true },
+                { data: 'spec', header: true },
+              ],
+              ...specRows,
+            ])
+            .addLink('cypress-split', 'https://cypress.tips')
             .write()
         }
 
