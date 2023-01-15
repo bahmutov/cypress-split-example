@@ -37,8 +37,24 @@ module.exports = defineConfig({
       // the user can specify the split flag / numbers
       // using either OS process environment variables
       // or Cypress env variables
-      const SPLIT = process.env.SPLIT || config.env.split
-      const SPLIT_INDEX = process.env.SPLIT_INDEX || config.env.splitIndex
+      let SPLIT = process.env.SPLIT || config.env.split
+      let SPLIT_INDEX = process.env.SPLIT_INDEX || config.env.splitIndex
+      if (SPLIT === 'true' || SPLIT === true) {
+        // the user wants us to determine the machine index
+        // and the total number of machines, which is possible for some CI systems
+        if (process.env.CIRCLE) {
+          SPLIT = process.env.CIRCLE_NODE_TOTAL
+          SPLIT_INDEX = process.env.CIRCLE_NODE_INDEX
+          console.log(
+            '%s detected CircleCI machine %d of %d',
+            SPLIT,
+            SPLIT_INDEX,
+          )
+        } else {
+          throw new Error('Do not know how to determine the correct split')
+        }
+      }
+
       if (isDefined(SPLIT) && isDefined(SPLIT_INDEX)) {
         const specs = getSpecs(config)
         console.log('%s there are %d found specs', label, specs.length)

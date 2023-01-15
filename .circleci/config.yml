@@ -17,4 +17,4 @@ workflows:
           # built-in CircleCI environment variables
           # https://circleci.com/docs/variables/#built-in-environment-variables
           build: npx @bahmutov/print-env CIRCLE
-          command: npx cypress run --env split=$CIRCLE_NODE_TOTAL,splitIndex=$CIRCLE_NODE_INDEX
+          command: npx cypress run --env split=true
