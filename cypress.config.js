@@ -48,6 +48,7 @@ module.exports = defineConfig({
           SPLIT_INDEX = process.env.CIRCLE_NODE_INDEX
           console.log(
             '%s detected CircleCI machine %d of %d',
+            label,
             SPLIT,
             SPLIT_INDEX,
           )
@@ -60,8 +61,8 @@ module.exports = defineConfig({
         const specs = getSpecs(config)
         console.log('%s there are %d found specs', label, specs.length)
         // console.log(specs)
-        const splitN = Number(process.env.SPLIT)
-        const splitIndex = Number(process.env.SPLIT_INDEX)
+        const splitN = Number(SPLIT)
+        const splitIndex = Number(SPLIT_INDEX)
         console.log('%s split %d of %d', label, splitIndex, splitN)
         const splitSpecs = getChunk(specs, splitN, splitIndex)
         console.log(splitSpecs)
@@ -72,7 +73,7 @@ module.exports = defineConfig({
           })
           ghCore.summary
             .addHeading(
-              `${label}: split ${splitIndex + 1} of ${split} (${
+              `${label}: split ${splitIndex + 1} of ${splitN} (${
                 splitSpecs.length
               } specs)`,
             )
