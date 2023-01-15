@@ -70,16 +70,16 @@ module.exports = defineConfig({
         const specRows = splitSpecs.map((specName, k) => {
           return [String(k + 1), specName]
         })
-        cTable(['k', 'spec'], specRows)
+        console.log(cTable.getTable(['k', 'spec'], specRows))
 
         if (process.env.GITHUB_ACTIONS) {
           // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
 
           ghCore.summary
             .addHeading(
-              `${label}: split ${splitIndex + 1} of ${splitN} (${
+              `${label} chunk ${splitIndex + 1} of ${splitN} (${
                 splitSpecs.length
-              } specs)`,
+              } ${splitSpecs.length === 1 ? 'spec' : 'specs'})`,
             )
             .addTable([
               [
