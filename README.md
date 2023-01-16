@@ -4,6 +4,8 @@
 
 Using the free plugin [cypress-split](https://github.com/bahmutov/cypress-split) without any external services
 
+![Cypress split on GitHub Actions](./images/split.png)
+
 <!-- prettier-ignore-start -->
 CI name | Workflow | CI status
 --- | --- | ---
