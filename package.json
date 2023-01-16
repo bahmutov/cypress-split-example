@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "cypress run",
-    "badges": "npx -p dependency-version-badge update-badge cypress"
+    "badges": "npx -p dependency-version-badge update-badge cypress cypress-split"
   },
   "repository": {
     "type": "git",
