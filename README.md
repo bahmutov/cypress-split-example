@@ -10,3 +10,18 @@ CI name | Workflow | CI status
 GitHub Actions | [ci.yml](./.github/workflows/ci.yml) | [![ci](https://github.com/bahmutov/cypress-split-example/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/cypress-split-example/actions/workflows/ci.yml)
 CircleCI | [config.yml](./.circleci/config.yml) | [![CircleCI](https://dl.circleci.com/status-badge/img/gh/bahmutov/cypress-split-example/tree/main.svg?style=svg&circle-token=dfde227842eaaf720046feeb8ada7cd419732634)](https://dl.circleci.com/status-badge/redirect/gh/bahmutov/cypress-split-example/tree/main)
 <!-- prettier-ignore-end -->
+
+## Small print
+
+Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2023
+
+- [@bahmutov](https://twitter.com/bahmutov)
+- [glebbahmutov.com](https://glebbahmutov.com)
+- [blog](https://glebbahmutov.com/blog)
+- [videos](https://www.youtube.com/glebbahmutov)
+- [presentations](https://slides.com/bahmutov)
+- [cypress.tips](https://cypress.tips)
+- [Cypress Tips & Tricks Newsletter](https://cypresstips.substack.com/)
+- [my Cypress courses](https://cypress.tips/courses)
+
+License: MIT - do anything with the code, but don't blame me if it does not work.

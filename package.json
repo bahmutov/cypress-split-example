@@ -1,7 +1,7 @@
 {
   "name": "cypress-split-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "Split Cypress specs on GitHub Actions and CircleCI",
   "main": "index.js",
   "private": true,
   "scripts": {
