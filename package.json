@@ -7,7 +7,7 @@
   "scripts": {
     "test": "cypress run",
     "badges": "npx -p dependency-version-badge update-badge cypress cypress-split",
-    "debug": "DEBUG=cypress-split SPLIT=4 SPLIT_INDEX=0 npx cypress run"
+    "debug": "DEBUG=cypress-split SPLIT=6 SPLIT_INDEX=5 npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
   "devDependencies": {
     "cypress": "^12.3.0",
     "prettier": "^2.8.3",
-    "cypress-split": "1.1.2"
+    "cypress-split": "1.1.3"
   }
 }
