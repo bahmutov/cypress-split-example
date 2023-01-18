@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "cypress run",
-    "badges": "npx -p dependency-version-badge update-badge cypress cypress-split"
+    "badges": "npx -p dependency-version-badge update-badge cypress cypress-split",
+    "debug": "DEBUG=cypress-split SPLIT=4 SPLIT_INDEX=0 npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,6 @@
   "devDependencies": {
     "cypress": "^12.3.0",
     "prettier": "^2.8.3",
-    "cypress-split": "1.1.0"
+    "cypress-split": "1.1.2"
   }
 }
