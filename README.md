@@ -14,6 +14,8 @@ Reusable GHA | [reusable.yml](./.github/workflows/reusable.yml) | [![reusable](h
 CircleCI | [config.yml](./.circleci/config.yml) | [![CircleCI](https://dl.circleci.com/status-badge/img/gh/bahmutov/cypress-split-example/tree/main.svg?style=svg&circle-token=dfde227842eaaf720046feeb8ada7cd419732634)](https://dl.circleci.com/status-badge/redirect/gh/bahmutov/cypress-split-example/tree/main)
 <!-- prettier-ignore-end -->
 
+Reusable workflow via [cypress-workflows](https://github.com/bahmutov/cypress-workflows)
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2023
