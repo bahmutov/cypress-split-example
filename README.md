@@ -6,6 +6,8 @@ Using the free plugin [cypress-split](https://github.com/bahmutov/cypress-split)
 
 ![Cypress split on GitHub Actions](./images/split.png)
 
+📝 Read the blog post [Run Cypress Specs In Parallel For Free](https://glebbahmutov.com/blog/cypress-parallel-free/).
+
 <!-- prettier-ignore-start -->
 CI name | Workflow | CI status
 --- | --- | ---
