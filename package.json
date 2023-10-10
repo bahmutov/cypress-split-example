@@ -7,7 +7,8 @@
   "scripts": {
     "test": "cypress run",
     "badges": "npx -p dependency-version-badge update-badge cypress cypress-split",
-    "debug": "DEBUG=cypress-split SPLIT=6 SPLIT_INDEX=5 npx cypress run"
+    "debug": "DEBUG=cypress-split SPLIT=6 SPLIT_INDEX=5 npx cypress run",
+    "lint": "tsc --noEmit cypress.config.ts"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
   "homepage": "https://github.com/bahmutov/cypress-split-example#readme",
   "devDependencies": {
     "cypress": "^13.3.0",
-    "cypress-split": "1.4.1",
+    "cypress-split": "1.5.0",
     "prettier": "^3.0.0",
     "typescript": "^5.2.2"
   }
