@@ -23,6 +23,6 @@
   "devDependencies": {
     "cypress": "^13.3.0",
     "prettier": "^3.0.0",
-    "cypress-split": "1.4.0"
+    "cypress-split": "1.4.1"
   }
 }
