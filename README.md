@@ -1,4 +1,4 @@
-# cypress-split-example ![cypress version](https://img.shields.io/badge/cypress-13.3.0-brightgreen) ![cypress-split version](https://img.shields.io/badge/cypress--split-1.15.0-brightgreen)
+# cypress-split-example ![cypress version](https://img.shields.io/badge/cypress-13.3.0-brightgreen) ![cypress-split version](https://img.shields.io/badge/cypress--split-1.15.2-brightgreen)
 
 > Split Cypress specs on GitHub Actions and CircleCI
 
