@@ -23,7 +23,7 @@
   "homepage": "https://github.com/bahmutov/cypress-split-example#readme",
   "devDependencies": {
     "cypress": "^13.3.0",
-    "cypress-split": "1.24.5",
+    "cypress-split": "1.24.6",
     "prettier": "^3.0.0",
     "typescript": "^5.2.2"
   }
