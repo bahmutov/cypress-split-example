@@ -10,7 +10,7 @@ jobs:
 
       - name: Run Cypress tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v7.4.3
 
   # example splitting all tests across GitHub machines
   prepare:
@@ -49,7 +49,7 @@ jobs:
 
       - name: Run split Cypress tests 🧪
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v7.4.3
         env:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
